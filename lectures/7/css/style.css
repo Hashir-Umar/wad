@@ -1,6 +1,33 @@
 #main {
-    /* add CSS here */
+    /*max-width: 800px;*/
+    width: 400px;
+    margin:0 auto;
+    padding-top: 120px;
 }
+
 .pet {
-    /* add CSS here */
+    border: 1px dashed #fa0263;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    -webkit-box-shadow: -1px 3px 118px -5px rgba(204,113,240,1);
+    -moz-box-shadow: -1px 3px 118px -5px rgba(204,113,240,1);
+    box-shadow: -1px 3px 118px -5px rgba(204,113,240,1);
+    transition: box-shadow .4s linear;
+}
+
+.pet:hover {
+    cursor: pointer;
+    -webkit-box-shadow: -1px 3px 69px 10px rgba(204,113,240,1);
+    -moz-box-shadow: -1px 3px 69px 10px rgba(204,113,240,1);
+    box-shadow: -1px 3px 69px 10px rgba(204,113,240,1);
+}
+
+i:hover {
+    cursor: alias;
+}
+
+p {
+    font-family: Verdana;
+    font-size: 14px;
 }
