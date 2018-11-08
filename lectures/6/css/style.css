@@ -4,3 +4,134 @@
 a {
     color: #70579D;
 }
+
+#main {
+    max-width: 800px;
+    margin: auto;
+}
+
+.article {
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    width: auto;
+    padding: 10px 12px;
+    margin: 0 0 10px 0;
+    background-color: rgba(243, 242, 233, 0.2);
+}
+
+.article-name h1 {
+    font-size: 24px;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 3px;
+    margin-bottom: 0;
+}
+
+.article-opt {
+    border-radius: 50%;
+    float: right;
+    height: 24px;
+    text-align: center;
+    width: 24px;
+    line-height: 3.5;
+}
+
+.article-opt:hover {
+    color: #70579D;
+    cursor: pointer;
+}
+
+.article-overview {
+    font-size: 75%;
+}
+
+.article-overview a {
+    font-style: italic;
+    text-decoration: none;
+}
+
+.article-overview a:hover {
+    text-decoration: underline;
+}
+
+.pipe {
+    color: #ccc;
+    margin: 0 5px;
+}
+
+.text-muted {   
+    opacity: 0.6;
+}
+
+.text-small {
+    font-size: 85%;
+}
+
+.lister-list {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.lister-list > .lister-item {
+    background-color: #f6f6f5;
+    margin-bottom: 3px;
+    padding: 10px 10px 20px;
+}
+
+.lister-list > .lister-item > .lister-item-image {
+    display: inline-block;
+    width: 20%;
+}
+
+.lister-list > .lister-item > .lister-item-image img {
+    /* box-shadow: 3px 3px 3px 1px rgba(97, 96, 96, 0.6); */
+    height: 200px;
+    width: 90%;
+}
+
+.lister-list > .lister-item > .lister-item-content {
+    width: 80%;
+    float: right; 
+}
+
+.lister-list > .lister-item > .lister-item-content > h3 {
+    margin: 0 0 0.5rem;
+    padding: 0;    
+}
+
+
+.lister-list > .lister-item > .lister-item-content > h3 > a {
+    color: #70579D;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 3px;
+}
+
+
+.lister-list > .lister-item > .lister-item-content > h3 > .lister-item-year {
+    font-size: small;
+    font-weight: normal;    
+}
+
+
+.lister-list > .lister-item > .lister-item-content > .lister-item-summary {
+    font-size: 13px;
+    line-height: 140%;
+    color: #272727;
+}
+
+
+.lister-list > .lister-item > .lister-item-content > .lister-item-summary::first-letter {
+    font-size: 1.3em;
+    color: #70579D;
+}
+
+p.lister-item-summary::selection {
+    color: #fefefe;
+    background: #70579D;
+}
+
+.lister-list > .lister-item > .lister-item-content a {
+   text-decoration: none;
+   color: rgb(78, 33, 163);
+}
