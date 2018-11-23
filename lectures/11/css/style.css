@@ -19,3 +19,10 @@
 .done {
     text-decoration: line-through;
 }
+
+.input {
+    padding: 2px 5px; 
+    position: absolute;
+    top: 15px;
+    left: 10px;
+}
