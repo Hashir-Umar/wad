@@ -19,6 +19,20 @@ var questions = [{
         "for",
         "none of the above"],
     correctAnswer : 1
+},{
+    question : "What type of animal is a seahorse?",
+    choices : [ "Crustacean",
+        "Arachnid",
+        "Fish",
+        "Shell"],
+    correctAnswer : 0
+},{
+    question : "What color are zebras?",
+    choices : [ "White with black stripes.",
+        "Black with white stripes.",
+        "Both of the above.",
+        "none of the above"],
+    correctAnswer : 1
 }];
 
 var currentQuestion = 0;
@@ -27,11 +41,63 @@ var quizOver = false;
 displayCurrentQuestion();
 document.getElementById("quiz-message").style.display = 'none';
 function displayNext() {
-    /*Write your code here */
+
+    if(currentQuestion >= questions.length) {
+        resetQuiz();
+        document.getElementById("choice-list").innerHTML = "";  
+        displayCurrentQuestion();
+        return;
+    }
+
+    var myAnswer = -1;
+    var radios = document.getElementsByName("answer");
+    for (var i = 0, length = radios.length; i < length; i++) {
+        if (radios[i].checked) {
+            myAnswer = radios[i].value;
+            break;
+        }
+    }
+
+    if(myAnswer == -1) {
+        var msg = document.getElementById("quiz-message");
+        msg.style.display = 'block';
+        msg.innerHTML = "Selection Required!!";
+        return;
+    }
+
+    if (questions[currentQuestion].correctAnswer == myAnswer) {
+        currentQuestion += 1;
+        correctAnswers += 1;
+        if(currentQuestion >= questions.length) {
+            displayScore();
+            document.getElementById("next-btn").innerHTML = "Start Again";
+            return;
+        }     
+    } else {
+        currentQuestion += 1;
+
+        if(currentQuestion >= questions.length) {
+            displayScore();
+            document.getElementById("next-btn").innerHTML = "Start Again";
+            return;
+        }
+    }
+
+    document.getElementById("choice-list").innerHTML = "";  
+    displayCurrentQuestion();
+    
 }
 
-function displayCurrentQuestion() {
-    /*Write your code here */
+function displayCurrentQuestion() 
+{
+    var elm = document.getElementById("question");
+    elm.innerHTML = questions[currentQuestion].question;
+    var ulElm = document.getElementById("choice-list");
+    for(var i = 0; i < questions[currentQuestion].choices.length; i++) {
+        var liElm = document.createElement("li");
+        liElm.innerHTML = "<input id='myradio' type='radio' name='answer' value='"+i+"'>" + questions[currentQuestion].choices[i];
+        ulElm.appendChild(liElm);
+    }
 }
 
 function resetQuiz() {
