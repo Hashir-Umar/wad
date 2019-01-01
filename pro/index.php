@@ -1,5 +1,5 @@
 <?php
-    require_once("../server/db_connection.php");
+    require_once("server/db_connection.php");
     include_once("server/functions.php");
 ?>
 <!DOCTYPE html>
