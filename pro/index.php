@@ -1,8 +1,7 @@
-<?php
-    require_once("server/db_connection.php");
-    include_once("server/functions.php");
-?>
 <!DOCTYPE html>
+<?php
+    require "server/functions.php";
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,7 +18,7 @@
     <div class="row">
         <div class="col-12 no-padding">
             <nav class="navbar navbar-light bg-light navbar-expand-sm fixed-top">
-                <a class="navbar-brand" href="index.php"><img src="media/logo.png" width="175" height="50" alt="logo">
+                <a class="navbar-brand" href="index.html"><img src="media/logo.png" width="175" height="50" alt="logo">
                 </a>
                 <button class="navbar-toggler" type="button"
                         data-toggle="collapse"
@@ -42,13 +41,13 @@
                     <div class="col-lg-3 col-md-4 col-sm-5">
                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 float-sm-right">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.php"><i class="fas fa-heart sc-color fa-2x"></i></a>
+                                <a class="nav-link" href="index.html"><i class="fas fa-heart sc-color fa-2x"></i></a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.php"><i class="fas fa-shopping-cart sc-color fa-2x"></i></a>
+                                <a class="nav-link" href="index.html"><i class="fas fa-shopping-cart sc-color fa-2x"></i></a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.php"> <span class="sc-fs">Login </span></a>
+                                <a class="nav-link" href="index.html"> <span class="sc-fs">Login </span></a>
                             </li>
                         </ul>
                     </div>
@@ -68,16 +67,14 @@
                     Categories
                 </a>
                 <ul class="collapse show list-unstyled" id="homeSubmenu">
-                    
                     <?php
                         $rows = getCategories();          
                         for ($i = 0; $i < mysqli_num_rows($rows); $i++) {
                             $row = mysqli_fetch_assoc($rows);
-                            echo "<li> <a class='nav-link'  href='#'>" . $row['name'] . "</a></li>" ;
+                            echo "<li> <a class='nav-link'  href='#'>" . $row['cat_title'] . "</a></li>" ;
                         }
 
                     ?>
-                   
                 </ul>
             </li>
             <li class="active">
@@ -90,7 +87,7 @@
                         $rows = getBrands();          
                         for ($i = 0; $i < mysqli_num_rows($rows); $i++) {
                             $row = mysqli_fetch_assoc($rows);
-                            echo "<li> <a class='nav-link'  href='#'>" . $row['name'] . "</a></li>" ;
+                            echo "<li> <a class='nav-link'  href='#'>" . $row['brand_title'] . "</a></li>" ;
                         }
 
                     ?>
@@ -112,10 +109,41 @@
     </nav>
     <article id="content" class="container-fluid bg-white">
 
-        <div class="row">
-            <div class="col">
-                Content
-            </div>
+        <div class="row my-4">
+            <?php
+                $rows = displayContent();     
+                $total_count = mysqli_num_rows($rows); 
+                if($total_count == 0)
+                    echo "No Product Found";
+                    
+                for ($i = 0; $i < $total_count; $i++) {
+                    $row = mysqli_fetch_assoc($rows);
+                    $pro_title = $row['pro_title'];
+                    $pro_price = $row['pro_price'];
+                    $pro_desc = $row['pro_desc'];
+                    $pro_cat_title = $row['cat_title'];
+                    $pro_brand_title = $row['brand_title'];
+                    
+                    echo "<div class='col-sm-6 col-lg-4 mb-4'>";
+                    echo "<div id='product'>";
+                    echo "<div class='product_header'>";
+                    echo "<div class='product_img'>";
+                    echo "<div class='product_card'>";
+                    echo "<p class='product_category'>" . $pro_cat_title . "</p>";
+                    echo "<p class='product_brand'>" . $pro_brand_title . "</p>";
+                    echo "<p class='product_desc'>Product Description: ".$pro_desc."</p>";
+                    echo "</div>";
+                    echo "<img src='media/product_image.png' alt='Product Image' width='100%'>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "<div class='product_footer'>";
+                    echo "<span class='product_title'>" . $pro_title . "</span>";
+                    echo "<span class='product_price'>Price: $" . $pro_price . "</span>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</div>";
+                }
+            ?>
         </div>
     </article>
 
