@@ -1,4 +1,4 @@
 <?php
-$connection = mysqli_connect("localhost","root","","tech_box_db");
-if(!$connection)
+$con = mysqli_connect("localhost","root","","tech_box_db");
+if(!$con)
     die("Connection failed");

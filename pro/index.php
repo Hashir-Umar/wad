@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-    require "server/functions.php";
+require "server/functions.php";
 ?>
 <html lang="en">
 <head>
@@ -67,14 +67,7 @@
                     Categories
                 </a>
                 <ul class="collapse show list-unstyled" id="homeSubmenu">
-                    <?php
-                        $rows = getCategories();          
-                        for ($i = 0; $i < mysqli_num_rows($rows); $i++) {
-                            $row = mysqli_fetch_assoc($rows);
-                            echo "<li> <a class='nav-link'  href='#'>" . $row['cat_title'] . "</a></li>" ;
-                        }
-
-                    ?>
+                    <?php getCats(); ?>
                 </ul>
             </li>
             <li class="active">
@@ -83,14 +76,7 @@
                     Brands
                 </a>
                 <ul class="collapse show list-unstyled" id="pageSubmenu">
-                    <?php
-                        $rows = getBrands();          
-                        for ($i = 0; $i < mysqli_num_rows($rows); $i++) {
-                            $row = mysqli_fetch_assoc($rows);
-                            echo "<li> <a class='nav-link'  href='#'>" . $row['brand_title'] . "</a></li>" ;
-                        }
-
-                    ?>
+                    <?php getBrands(); ?>
                 </ul>
             </li>
             <li>
@@ -109,41 +95,8 @@
     </nav>
     <article id="content" class="container-fluid bg-white">
 
-        <div class="row my-4">
-            <?php
-                $rows = displayContent();     
-                $total_count = mysqli_num_rows($rows); 
-                if($total_count == 0)
-                    echo "No Product Found";
-                    
-                for ($i = 0; $i < $total_count; $i++) {
-                    $row = mysqli_fetch_assoc($rows);
-                    $pro_title = $row['pro_title'];
-                    $pro_price = $row['pro_price'];
-                    $pro_desc = $row['pro_desc'];
-                    $pro_cat_title = $row['cat_title'];
-                    $pro_brand_title = $row['brand_title'];
-                    
-                    echo "<div class='col-sm-6 col-lg-4 mb-4'>";
-                    echo "<div id='product'>";
-                    echo "<div class='product_header'>";
-                    echo "<div class='product_img'>";
-                    echo "<div class='product_card'>";
-                    echo "<p class='product_category'>" . $pro_cat_title . "</p>";
-                    echo "<p class='product_brand'>" . $pro_brand_title . "</p>";
-                    echo "<p class='product_desc'>Product Description: ".$pro_desc."</p>";
-                    echo "</div>";
-                    echo "<img src='media/product_image.png' alt='Product Image' width='100%'>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "<div class='product_footer'>";
-                    echo "<span class='product_title'>" . $pro_title . "</span>";
-                    echo "<span class='product_price'>Price: $" . $pro_price . "</span>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
-                }
-            ?>
+        <div class="row">
+                <?php getPro(); ?>
         </div>
     </article>
 
