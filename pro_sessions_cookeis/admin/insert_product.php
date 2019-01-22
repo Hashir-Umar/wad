@@ -21,7 +21,7 @@ if(isset($_POST['insert_pro'])){
                   VALUES ('$pro_cat','$pro_brand','$pro_title','$pro_price','$pro_desc','$pro_image','$pro_keywords');";
     $insert_pro = mysqli_query($con, $insert_product);
     if($insert_pro){
-        header("location: ".$_SERVER['PHP_SELF']);
+        header("location: index.php?view_products");
     }
 }
 ?>
