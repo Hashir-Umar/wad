@@ -6,7 +6,7 @@
         $url = str_replace(" ","\n", $url);
 
         $res = "";
-        $pattern = "/^(http:\/\/|https:\/\/)?([a-zA-Z]{2,3}\.)?([a-zA-Z0-9]+\.[a-zA-Z]{2,3})(\/.*)?$/m";
+        $pattern = "/^(http:\/\/|https:\/\/)?([a-zA-Z]{2,3}\.)?([a-zA-Z0-9]+(\.[a-zA-Z]{2,3})*)(\/.*)?$/m";
         preg_match_all($pattern, $url, $res, PREG_SET_ORDER, 0);
         
         $i = 1;
